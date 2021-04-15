@@ -3,14 +3,33 @@
 namespace App\Tests;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
+use App\Entity\Product;
 
 class ProductsTest extends ApiTestCase
 {
-    public function testSomething(): void
+    public function testGetProducts(): void
     {
-        $response = static::createClient()->request('GET', '/');
+
+        $response = static::createClient()->request('GET', '/api/products');
 
         $this->assertResponseIsSuccessful();
-        $this->assertJsonContains(['@id' => '/']);
+        // Asserts that the returned content type is JSON-LD (the default)
+        $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
+
+        // Asserts that the returned JSON is a superset of this one
+        $this->assertJsonContains([
+            '@context' => '/api/contexts/Product',
+            '@id' => '/api/products',
+            '@type' => 'hydra:Collection',
+            'hydra:totalItems' => 5 //total items
+
+        ]);
+
+        // Because test fixtures are automatically loaded between each test, you can assert on them
+        $this->assertCount(5, $response->toArray()['hydra:member']);  //total per page
+
+        // Asserts that the returned JSON is validated by the JSON Schema generated for this resource by API Platform
+        // This generated JSON Schema is also used in the OpenAPI spec!
+        $this->assertMatchesResourceCollectionJsonSchema(Product::class);
     }
 }
