@@ -2,15 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\OrderRepository;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Core\Annotation\ApiResource;
-
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
- * @ApiResource
  */
 class Order
 {
@@ -18,12 +17,12 @@ class Order
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     *
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity=Customer::class, inversedBy="orders")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $customer;
 
@@ -31,7 +30,6 @@ class Order
     {
         return $this->id;
     }
-
 
     public function getCustomer(): ?Customer
     {

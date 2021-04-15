@@ -12,7 +12,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=CustomerRepository::class)
  * @ApiResource
-
  */
 class Customer implements UserInterface
 {
@@ -44,9 +43,11 @@ class Customer implements UserInterface
     private $address;
 
     /**
-     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="customer")
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="customer", orphanRemoval=true)
      */
     private $orders;
+
+
 
     public function __construct()
     {
@@ -106,6 +107,27 @@ class Customer implements UserInterface
         return $this;
     }
 
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
     /**
      * @return Collection|Order[]
      */
@@ -134,25 +156,5 @@ class Customer implements UserInterface
         }
 
         return $this;
-    }
-
-    public function getRoles()
-    {
-        // TODO: Implement getRoles() method.
-    }
-
-    public function getSalt()
-    {
-        // TODO: Implement getSalt() method.
-    }
-
-    public function getUsername()
-    {
-        // TODO: Implement getUsername() method.
-    }
-
-    public function eraseCredentials()
-    {
-        // TODO: Implement eraseCredentials() method.
     }
 }
