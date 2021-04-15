@@ -11,6 +11,7 @@ class CustomerFixtures extends Fixture
 {
     private $encoder;
 
+
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
@@ -18,6 +19,8 @@ class CustomerFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+
+        $customersCollection = [];
         for($i=1; $i<=5; $i++){
             $customer = new Customer;
             $customer->setName('customer'.$i);
@@ -27,9 +30,9 @@ class CustomerFixtures extends Fixture
             );
             $customer->setAddress('address'.$i);
             $manager->persist($customer);
+            array_push($customersCollection, $customer);
 
         }
-
         $manager->flush();
     }
 }
