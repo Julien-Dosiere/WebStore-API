@@ -23,7 +23,8 @@ class CustomerFixtures extends Fixture
             $customer->setName('customer'.$i);
             $customer->setEmail($customer->getName().'@webstore.com');
             $customer->setPassword(
-                $this->encoder->encodePassword($customer, 'password'));
+                $this->encoder->encodePassword($customer, 'password')
+            );
             $customer->setAddress('address'.$i);
             $manager->persist($customer);
 

@@ -25,3 +25,5 @@ security:
     encoders:
         App\Entity\Customer:
             algorithm: auto
+        App\Entity\Employee:
+            algorithm: auto

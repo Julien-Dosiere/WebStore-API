@@ -25,11 +25,6 @@ class Order
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $number;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Customer::class, inversedBy="orders")
-     */
     private $customer;
 
     public function getId(): ?int
@@ -37,17 +32,6 @@ class Order
         return $this->id;
     }
 
-    public function getNumber(): ?string
-    {
-        return $this->number;
-    }
-
-    public function setNumber(string $number): self
-    {
-        $this->number = $number;
-
-        return $this;
-    }
 
     public function getCustomer(): ?Customer
     {
