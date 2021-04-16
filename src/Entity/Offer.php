@@ -10,7 +10,18 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=OfferRepository::class)
- * @ApiResource
+ * @ApiResource(
+ *   itemOperations={
+ *         "get",
+ *         "put"={"security"="is_granted('ROLE_ADMIN')"},
+ *         "patch"={"security"="is_granted('ROLE_ADMIN')"},
+ *          "delete"={"security"="is_granted('ROLE_ADMIN')"}
+ *    },
+ *    collectionOperations={
+ *          "get",
+ *          "post"={"security"="is_granted('ROLE_ADMIN')"},
+ *     }
+ * )
  */
 class Offer
 {

@@ -18,8 +18,8 @@ use Doctrine\ORM\Mapping as ORM;
 *          "delete"={"security"="is_granted('ROLE_ADMIN')"}
  *    },
  *    collectionOperations={
- *     "get",
- *     "post"={"security"="is_granted('ROLE_ADMIN')"},
+ *          "get",
+ *          "post"={"security"="is_granted('ROLE_ADMIN')"},
  *     }
  * )
  */
