@@ -9,9 +9,20 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
+ * @ApiResource(
+ *   itemOperations={
+ *         "get"={"security"="object.getCustomer() == user"},
+ *         "put"={"security"="object.getCustomer() == user"},
+ *         "patch"={"security"="object.getCustomer() == user"},
+ *         "delete"={"security"="object.getCustomer() == user"},
+ *    },
+ *    collectionOperations={
+ *          "get"={"security"="is_granted('ROLE_ADMIN')"},
+ *          "post"
+ *     }
+ * )
  */
 class Order
 {

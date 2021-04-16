@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  *         "get",
  *         "put"={"security"="is_granted('ROLE_ADMIN')"},
  *         "patch"={"security"="is_granted('ROLE_ADMIN')"},
- *          "delete"={"security"="is_granted('ROLE_ADMIN')"}
+ *         "delete"={"security"="is_granted('ROLE_ADMIN')"}
  *    },
  *    collectionOperations={
  *          "get",

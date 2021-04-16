@@ -38,6 +38,11 @@ class Customer implements UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $address;
@@ -108,11 +113,17 @@ class Customer implements UserInterface
     }
 
 
-    public function getRoles()
+    public function getRoles(): ?array
     {
-        // TODO: Implement getRoles() method.
+        return $this->roles;
     }
 
+//    public function setRole(array $roles): self
+//    {
+//        $this->roles = $roles;
+//
+//        return $this;
+//    }
     public function getSalt()
     {
         // TODO: Implement getSalt() method.
