@@ -110,9 +110,14 @@ class Employee implements UserInterface
         // TODO: Implement getSalt() method.
     }
 
-    public function getUsername()
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        // TODO: Implement getUsername() method.
+        return (string) $this->email;
     }
 
     public function eraseCredentials()

@@ -2,10 +2,9 @@
 
 namespace App\Tests;
 
-use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\Product;
 
-class ProductsTest extends ApiTestCase
+class ProductsTest extends AbstractTest
 {
 
     public function testGetProducts(): void
@@ -34,24 +33,36 @@ class ProductsTest extends ApiTestCase
         $this->assertMatchesResourceCollectionJsonSchema(Product::class);
     }
 
+    public function testAdminResource()
+    {
+        $response = $this->createClientWithCredentials()->request('GET', '/api/customers');
+        $this->assertResponseIsSuccessful();
+    }
+
     public function testCreateDeleteProduct(): void
     {
-        $response = self::createClient()->request(
+
+
+
+        $response= $this->createClientWithCredentials()
+            ->request(
             'POST',
             '/api/products',
-            ['json' => [
-                'name' => 'product test',
-                'description' => 'product test description',
-                'price' => 10.00,
-                'stock' =>5
-            ]]
-        );
+            [
+                'json' => [
+                    'name' => 'product test',
+                    'description' => 'product test description',
+                    'price' => 10.00,
+                    'stock' =>5
+                ],
 
+            ]
+        );
         $this->assertResponseIsSuccessful();
         $productId = json_decode($response->getContent())->id;
 
 
-        $response = static::createClient()->request('GET', '/api/products/'.$productId );
+        $response = $this->createClientWithCredentials()->request('GET', '/api/products/'.$productId );
         $this->assertResponseIsSuccessful();
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
         $this->assertJsonContains([
@@ -62,7 +73,7 @@ class ProductsTest extends ApiTestCase
 
         ]);
 
-        $response = static::createClient()->request(
+        $response = $this->createClientWithCredentials()->request(
             'DELETE',
             '/api/products/'.$productId
         );
@@ -80,32 +91,6 @@ class ProductsTest extends ApiTestCase
 
 
     }
-
-//    public function testDeleteProduct(): void
-//    {
-//
-//        echo('/api/products/'.$this->productId);
-//        echo('/api/products/'.$this->productId);
-//        echo('/api/products/'.$this->productId);
-//        echo('/api/products/'.$this->productId);
-//        echo('/api/products/'.$this->productId);
-//        echo('/api/products/'.$this->productId);
-//        echo('/api/products/'.$this->productId);
-//        echo('/api/products/'.$this->productId);
-//
-//
-//        $response = static::createClient()->request('GET', '/api/products/'.$this->productId );
-//
-//
-//        $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
-//        $this->assertResponseStatusCodeSame(404);
-//        $this->assertJsonContains([
-//            '@type' => 'hydra:Error',
-//            'hydra:description' => 'Not Found'
-//        ]);
-//
-//    }
-
 
 
 
