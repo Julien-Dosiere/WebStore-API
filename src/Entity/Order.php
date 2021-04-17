@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  *        "get"={"security"="object.getCustomer() == user or is_granted('ROLE_ADMIN')",},
  *        "put"={"security"="object.getCustomer() == user or is_granted('ROLE_ADMIN')"},
  *        "patch"={"security"="object.getCustomer() == user or is_granted('ROLE_ADMIN')"},
- *         delete"={"security"="object.getCustomer() == user or is_granted('ROLE_ADMIN')"},
+ *         "delete"={"security"="object.getCustomer() == user or is_granted('ROLE_ADMIN')"},
  *    },
  *    collectionOperations={
  *         "get"={"security"="is_granted('ROLE_ADMIN')"},

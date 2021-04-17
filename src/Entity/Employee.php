@@ -9,7 +9,18 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=EmployeeRepository::class)
- * @ApiResource
+ * @ApiResource(
+ *   itemOperations={
+ *        "get"={"security"="object == user"},
+ *        "put"={"security"="object == user"},
+ *        "patch"={"security"="object == user"},
+ *         "delete"={"security"="object == user"},
+ *    },
+ *    collectionOperations={
+ *         "get"={"security"="is_granted('ROLE_ADMIN')"},
+ *         "post"
+ *     }
+ * )
  */
 class Employee implements UserInterface
 {

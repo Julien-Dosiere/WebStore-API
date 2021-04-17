@@ -11,7 +11,18 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=CustomerRepository::class)
- * @ApiResource
+ * @ApiResource(
+ *   itemOperations={
+ *        "get"={"security"="object == user or is_granted('ROLE_ADMIN')",},
+ *        "put"={"security"="object == user or is_granted('ROLE_ADMIN')"},
+ *        "patch"={"security"="object == user or is_granted('ROLE_ADMIN')"},
+ *         "delete"={"security"="object == user or is_granted('ROLE_ADMIN')"},
+ *    },
+ *    collectionOperations={
+ *         "get"={"security"="is_granted('ROLE_ADMIN')"},
+ *         "post"
+ *     }
+ * )
  */
 class Customer implements UserInterface
 {
