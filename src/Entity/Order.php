@@ -13,14 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="`order`")
  * @ApiResource(
  *   itemOperations={
- *         "get"={"security"="object.getCustomer() == user"},
- *         "put"={"security"="object.getCustomer() == user"},
- *         "patch"={"security"="object.getCustomer() == user"},
- *         "delete"={"security"="object.getCustomer() == user"},
+ *        "get"={"security"="object.getCustomer() == user or is_granted('ROLE_ADMIN')",},
+ *        "put"={"security"="object.getCustomer() == user or is_granted('ROLE_ADMIN')"},
+ *        "patch"={"security"="object.getCustomer() == user or is_granted('ROLE_ADMIN')"},
+ *         delete"={"security"="object.getCustomer() == user or is_granted('ROLE_ADMIN')"},
  *    },
  *    collectionOperations={
- *          "get"={"security"="is_granted('ROLE_ADMIN')"},
- *          "post"
+ *         "get"={"security"="is_granted('ROLE_ADMIN')"},
+ *         "post"
  *     }
  * )
  */
