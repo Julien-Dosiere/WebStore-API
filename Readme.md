@@ -3,6 +3,8 @@
 Webstore API is a backend app developed with Symfony & API-plateform. Its main role is to 
 serve data to customer and back office frontend apps, implementing REST principles.
 
+This is deployed and available at https://webstore-api-jd.herokuapp.com/api.
+
 ### Data structure
 The API would enable data management of customer, products, order, offers and employee.
 Please check the [MCD](doc/MCD/webstore-api.svg) to get more details about data fields 
