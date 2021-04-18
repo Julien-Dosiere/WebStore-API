@@ -10,6 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\ExistsFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiFilter;
 
 
 
@@ -27,6 +31,15 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *          "post"={"security"="is_granted('ROLE_ADMIN')"},
  *     }
  * )
+ * @Vich\Uploadable
+ * @ApiFilter(
+ *     OrderFilter::class,
+ *     properties={"id", "name"},
+ *     arguments={"orderParameterName"="order"}
+ *     )
+ * @ApiFilter (ExistsFilter::class, properties={"image"})
+ * @ApiFilter (SearchFilter::class, properties={"id": "exact", "name": "partial", "description":
+ *     "partial"})
  */
 class Product
 {
