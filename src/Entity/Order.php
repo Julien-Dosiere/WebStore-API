@@ -7,6 +7,7 @@ use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Customer;
 
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
@@ -20,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
  *    },
  *    collectionOperations={
  *         "get"={"security"="is_granted('ROLE_ADMIN')"},
- *         "post"
+ *         "post"={"security"="is_granted('ROLE_CUSTOMER')"}
  *     }
  * )
  */

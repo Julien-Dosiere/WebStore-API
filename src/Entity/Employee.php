@@ -45,7 +45,7 @@ class Employee implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private $roles = ['ROLE_ADMIN'];
 
     /**
      * @ORM\Column(type="string", length=255)

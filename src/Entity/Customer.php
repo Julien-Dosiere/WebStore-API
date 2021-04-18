@@ -51,7 +51,7 @@ class Customer implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = ['ROLE_USER'];
+    private $roles = ['ROLE_CUSTOMER'];
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -142,7 +142,7 @@ class Customer implements UserInterface
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->email;
     }
 
     public function eraseCredentials()
