@@ -6,3 +6,8 @@
 check_path:
   path: /login
   methods: [POST]
+
+upload_image:
+  path: /api/upload
+  controller: App\Controller\UploadFileController
+  methods: POST
