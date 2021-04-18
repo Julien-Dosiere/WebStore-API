@@ -1,6 +1,6 @@
  # WebStore API
  
-Webstore API is a backend app developed with Symfony & API-plateform. Its main role is to 
+Webstore API is a backend app developed with Symfony & API-Platform. Its main role is to 
 serve data to customer and back office frontend apps, implementing REST principles.
 
 This is deployed and available at https://webstore-api-jd.herokuapp.com/api.
@@ -46,7 +46,7 @@ $ composer install
    user and 'webstore' also as password
 
 4. Run migrations to create your database structure with following command (you can 
-   also import the database-import.sql file which would create databaser structure & seeds)
+   also import the database-import.sql file which would create database structure & seeds)
 ```
 $ bin/console doctrine:migration:migrate
 ```
@@ -55,9 +55,9 @@ $ bin/console doctrine:migration:migrate
 ```
 $ symfony serve
 ```
-It uses port 8000 as default. Got to http://127.0.0.1:8000/api to your local server documentation
+It uses port 8000 as default. Go to http://127.0.0.1:8000/api to access the endpoints list
 
-Your app is up and running (with the empty database) !!
+Your app is up and running (though the database is empty) !!
 
 #### Optional: populate & test the API
 
