@@ -1,24 +1,15 @@
-CUSTOMER: _name, email, password, address
+CUSTOMER: _name, email, password, address, role
 PUT, 0N CUSTOMER, 11 ORDER
 ORDER: _orderNumber
 :
-EMPLOYEE: _name, email, role, password
+EMPLOYEE: _name, email, password, role
 
 
 CONTAINS, 1N ORDER, 0N PRODUCT
 
 OFFER: _name, type, value, description, validFrom, validThrough
 TARGETS, 0N OFFER, 0N PRODUCT
-PRODUCT: _name, description, price, stock
+PRODUCT: _name, description, price, stock, image, updated_at
 BELONGS TO, 0N PRODUCT, 0N CATEGORY
 CATEGORY: _name
 :
-
-
-
-:
-
-
-
-
-

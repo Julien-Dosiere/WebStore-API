@@ -3,14 +3,34 @@
 Webstore API is a backend app developed with Symfony & API-plateform. Its main role is to 
 serve data to customer and back office frontend apps, implementing REST principles.
 
-The API would enable management of customer, products, order & offers. 
+### Data structure
+The API would enable data management of customer, products, order, offers and employee.
+Please check the [MCD](doc/MCD/webstore-api.svg) to get more details about data fields 
+and their relations.
 
-It implements JWT for staff members authentication.
+You will find the list of all possible requests at the endpoint '/api'.
+
+Not mentioned in that page is **image upload** for product which is available at the 
+endpoint **'/upload'** 
+(needs a form-data body containing fields "imageFile" & "product_id").  
+
+
+### Authentication & permissions
+
+The API use 3 kinds of users:
+- Non-authenticated which only allows products & offers reading, and customer profile 
+  POST.  
+- Customer profile which allows order placing and modify its own profile datas
+- Employee profile which allows everything.
+
+The API use JWT for employee & customers authentication. **Login** is available at the 
+endpoint **"/login"** (POST method). It required registered employee or customer 
+email & password (json format).   
 
 ## Getting started
 
 ### Prerequisites:
-This app requires PHP version 7.4 or above and Composer installed on your system to 
+This app requires **PHP 7.4 or above and Composer** installed on your system to 
 work properly.
 
 ### Installation
