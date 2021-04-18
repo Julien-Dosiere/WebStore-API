@@ -37,15 +37,15 @@ work properly.
 
 ### Installation
 1. Clone this repo
-2. Install dependencies
+2. Install dependencies with the following command:
 ```
 $ composer install
 ```
-3. Create a database and configure your connection in the .env file. By Default, the 
+3. Create a database and configure your DB connection in the .env file. By Default, the 
    app requires a localhost PostgreSQL database called 'webstore' with a 'webstore' 
    user and 'webstore' also as password
 
-4. Run migrations to create your database structure with following command (you can 
+4. Run migrations to create your database structure with the following command (you can 
    also import the database-import.sql file which would create database structure & seeds)
 ```
 $ bin/console doctrine:migration:migrate
@@ -61,8 +61,8 @@ Your app is up and running (though the database is empty) !!
 
 #### Optional: populate & test the API
 
-6. If you havent use the database-import.sql file, seeds your database by running 
-   following commands:
+6. If you haven't use the database-import.sql file, seeds your database by running 
+   this command:
 ```
 $ bin/console doctrine:fixtures:load
 ```
