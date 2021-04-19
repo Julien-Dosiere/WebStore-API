@@ -27,7 +27,17 @@ The API use 3 kinds of users:
 
 The API use JWT for employee & customers authentication. **Login** is available at the 
 endpoint **"/login"** (POST method). It required registered employee or customer 
-email & password (json format).   
+email & password (json format).  
+
+You might want **change the passphrase and generate new pem keys** (./config/jwt) if you 
+are planning to use this API on a public server:
+1. Change the `JWT_PASSPHRASE` in the .env file
+2. Generate new public & private key using your new passphrase with the following 
+   commands:
+```
+$ openssl genrsa -out config/jwt/private.pem -aes256 4096
+$ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+```
 
 ## Getting started
 
